@@ -1,12 +1,8 @@
 
-// let date0El = document.getElementById('date0');
-// let date1El = document.getElementById('date1');
-// let date2El = document.getElementById('date2');
-// let date3El = document.getElementById('date3');
-// let date4El = document.getElementById('date4');
-// let date5El = document.getElementById('date5');
-
 const currentD = new Date();
+const key = "149536b779a216b9fd035e0c31488ca4";
+var city = 'Sydney';
+var country ='Australia';
 
 for (let i = 0; i < 6; i++) {
     const date = new Date();
@@ -14,25 +10,30 @@ for (let i = 0; i < 6; i++) {
     document.getElementById("date"+i).innerHTML = date.toLocaleDateString();
 }
 
-var requestUrl = "https://jsonplaceholder.typicode.com/posts";
+// const countryData = data.ref_country_codes.find((element) => country === element.country)
 
-const data = { username: 'example'};
+// var lat = countryData.latitude;
+// var long = countryData.longitude;
 
-fetch(requestUrl, {
-    method: 'POST',
-    headers:{
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data),
-})
-    .then (res => {
-        if (res.ok) {
-            console.log('Success')
-        } else {
-            console.log('Not Successful')
-        }
-        return res.json()
-        })
-    .then(data => console.log(data))
-    .catch(error => console.log('Error')
-)
+// use string templating here: e.g. `` quotes (not '' or "")
+var requestUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}`;
+// add button listener to search button to call api
+
+
+fetch(requestUrl)
+  .then(resp =>{
+    // if(!resp.ok) throw new Error(resp.statusText);
+    return resp.json();
+  })
+  .then(data=>{
+  console.log(data);
+  // for(var i = 0; i < 5; i++){
+    document.getElementById(temp0).innerHTML = json.parse(data.list.main.temp;)
+
+  // }
+  
+
+  })
+  .catch(err => {
+    console.log(err);
+  });
