@@ -27,10 +27,11 @@ fetch(requestUrl)
   })
   .then(data=>{
   console.log(data);
-  // for(var i = 0; i < 5; i++){
-    document.getElementById(temp0).innerHTML = json.parse(data.list.main.temp;)
-
-  // }
+  for(var i = 0; i < 6; i++){
+    document.getElementById("temp" + [i]).innerHTML = "Temp: " + data.list[i].main.temp + " °C"
+    document.getElementById("wind" + [i]).innerHTML = "Wind: " + data.list[i].wind.speed + " MPH"
+    document.getElementById("humidity" + [i] ).innerHTML = "Humidity: " + data.list[i].main.humidity + " %"
+  }
   
 
   })
