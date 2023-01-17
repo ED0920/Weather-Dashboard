@@ -3,15 +3,16 @@ const key = "149536b779a216b9fd035e0c31488ca4";
 function getCityData(city) {
   const currentD = new Date();
 
+  // apply dates for weather days
   for (let i = 0; i < 6; i++) {
     const date = new Date();
     date.setDate(currentD.getDate() + i);
     document.getElementById("date" + i).innerHTML = date.toLocaleDateString();
   }
 
-  // use string templating here: e.g. `` quotes (not '' or "")
   var requestUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
 
+  // fetching weather from API
   fetch(requestUrl)
     .then((resp) => {
       if (!resp.ok) throw new Error(resp.statusText);
@@ -37,7 +38,6 @@ function getCityData(city) {
 }
 
 // add button listener to search button to call api
-
 var searchBtnEl = document.getElementById("searchBtn");
 searchBtnEl.addEventListener("click", function () {
   const buttonEl = document.createElement("button");
